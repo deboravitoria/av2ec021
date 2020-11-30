@@ -1,0 +1,17 @@
+{
+  "name": "av2",
+  "version": "1.0.0",
+  "description": "avaliacao2",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "milena e debora",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "mongoose": "^5.10.15",
+    "restify": "^8.5.1",
+    "restify-router": "^0.6.2"
+  }
+}
