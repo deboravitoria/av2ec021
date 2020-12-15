@@ -1,18 +1,20 @@
+require('dotenv').config()  //biblioteca para usar o arquivo .env
 const restify = require ('restify')
 const server = restify.createServer()
 const mongoose = require('mongoose')
 const authRoutes = require('./routes/auth')
 const apiRoutes = require('./routes/apiV1')
+const DB_URL = process.env.DB_URL
 
 const dbConfig = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
   useFindAndModify: true,
-  dbName: 'ec021_av_2_aulas'
+  dbName: process.env.DB_NAME
 }
 
-mongoose.connect('mongodb+srv://adauto:adauto@cluster0-rven8.mongodb.net/test?retryWrites=true&w=majority', dbConfig)
+mongoose.connect(DB_URL, dbConfig)   //conectando com o banco do professor
 
 server.use(restify.plugins.bodyParser())
 server.use(restify.plugins.queryParser())

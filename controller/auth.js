@@ -11,7 +11,23 @@ routerInstance.post( '/login', async( req, res ) => {
   
   } catch(err){
     res.send(err.response.status, err.response.data)
+    //Abriu
+    if(!username || !password){
+      return res.send(401)//unauthorized
+    }
+
+    //Fechou
+  }
+  //Comecei aqui
+  validateToken: (req, res, next) =>{
+    let token = req.headers.token;
+
+    if(token){
+      return res.send(403); //Forbidden
+    }
+    next();
   }
 })
-
+//terminei aqui
 module.exports = routerInstance
+
