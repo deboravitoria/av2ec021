@@ -1,3 +1,5 @@
+//esqueleto do meme
+//configura os campos que o meme possui e seus tipos
 const mongoose = require('mongoose')
 
 const MemesSchema = new mongoose.Schema({

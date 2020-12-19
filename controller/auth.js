@@ -1,3 +1,4 @@
+//configura o login e as respostas http em caso de sucesso, sem autorização e acesso negado
 const Router = require('restify-router').Router
 const AuthModel = require('../models/auth')
 
@@ -15,7 +16,6 @@ routerInstance.post( '/login', async( req, res ) => {
     if(!username || !password){
       return res.send(401)//unauthorized
     }
-
     //Fechou
   }
   //Comecei aqui

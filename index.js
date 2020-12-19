@@ -13,8 +13,14 @@ const dbConfig = {
   useFindAndModify: true,
   dbName: process.env.DB_NAME
 }
-
-mongoose.connect(DB_URL, dbConfig)   //conectando com o banco do professor
+//conectando com o banco do professor
+mongoose.connect(DB_URL, dbConfig, function(error){
+  if(!error){
+    console.log('MongoDB conectado');
+  }else{
+    console.log('Erro ao conectar ao MongoDB: $(error)');
+  }
+})   
 
 server.use(restify.plugins.bodyParser())
 server.use(restify.plugins.queryParser())
@@ -22,7 +28,6 @@ server.use(restify.plugins.queryParser())
 authRoutes.applyRoutes(server, '')
 apiRoutes.applyRoutes(server, '/apiv1')
 
-const port = process.env.PORT | 5000
-server.listen(5000, function(){
-  console.log('Server started. Port: ' + port)
+server.listen(process.env.PORTA, function(){
+  console.log('Server rodando. Porta: ' + process.env.PORTA)
 })
